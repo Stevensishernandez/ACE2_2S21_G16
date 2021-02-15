@@ -1,0 +1,46 @@
+<nav>
+  <mat-toolbar color="primary" class="mat-elevation-z4">
+
+      <mat-icon> local_hospital </mat-icon>
+      <span>TVE</span>
+      <span class="example-spacer"></span>
+     
+      <button mat-raised-button color="accent" (click)="irSignUp()">Sign Up</button>
+    </mat-toolbar>
+</nav>
+
+
+  <div class="basic-blok"></div>  
+  <div class="center-content">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </div>
+          <mat-card-title>LOGIN</mat-card-title>
+          <mat-card-subtitle>User</mat-card-subtitle>
+        </mat-card-header>
+        
+              <form class="example-form">
+
+                <div class="little-blok"></div>
+
+                <mat-form-field class="full-with">
+                  <mat-label>User</mat-label>
+                  <input type="email" matInput placeholder="Ingresar usuario" value=""  [(ngModel)]="credenciales.usuario" name="in_email" >
+                </mat-form-field>
+              
+                <mat-form-field class="full-with">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput placeholder="Ingresar contraseña" value="" [(ngModel)]="credenciales.password" name="in_password">
+                </mat-form-field>
+
+                <div class="little-blok"></div>
+
+                <button class="button-form-blue" (click)="login()" mat-button color="primary">Login</button>
+              
+              </form>
+              
+      </mat-card>
+    </div>
+    <div class="basic-blok"></div>  

@@ -1,0 +1,50 @@
+<div class="container">
+
+  <mat-toolbar class="serch-bar">
+    <span>Añadir nuevo usuario</span>
+    <span class="example-spacer"></span>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Atleta</mat-label>
+      <input matInput placeholder="Ingresa el atleta" [(ngModel)]="usuarioBuscado" value="">
+      <mat-hint>(usuario)</mat-hint>
+    </mat-form-field>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="addAtleta()">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="example-container">
+    <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+
+      <ng-container matColumnDef="icono">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let usuario"> <mat-icon>directions_run</mat-icon> </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.usuario}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.nombres}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="opcion">
+        <th mat-header-cell *matHeaderCellDef> Inspeccionar </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+            Supervisar
+          </button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+  </div>
+  
+</div>   
