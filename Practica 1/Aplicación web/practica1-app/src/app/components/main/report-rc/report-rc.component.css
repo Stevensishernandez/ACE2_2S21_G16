@@ -33,4 +33,5 @@
 .panel-principal {
   margin-left: 3%;
   margin-right: 3%;
+  max-width: 1000px;
 }
