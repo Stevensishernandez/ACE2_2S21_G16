@@ -1,0 +1,28 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .card {
+    max-width: 260px;
+    margin-top: 20px;
+
+}
+
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.texto-libre {
+  margin-left: 5%;
+}
+
+.panel-principal {
+  margin-left: 3%;
+  margin-right: 3%;
+  max-width: 1000px;
+}
