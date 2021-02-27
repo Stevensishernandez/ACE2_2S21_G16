@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-usuario-coach',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioCoachComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    let usuario = sessionStorage.getItem('user');
+    let rol = sessionStorage.getItem('rol');
+
+    if(usuario == null || rol != 'C')
+    {
+      this.router.navigate(['']);
+    }
+
+
   }
 
 }

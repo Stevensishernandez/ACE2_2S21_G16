@@ -6,6 +6,8 @@ import { DialogRitmoComponent } from "../../dialogs/dialog-ritmo/dialog-ritmo.co
 import { DialogTemperaturaComponent } from "../../dialogs/dialog-temperatura/dialog-temperatura.component";
 import { DialogOxigenoComponent } from "../../dialogs/dialog-oxigeno/dialog-oxigeno.component";
 
+
+
 @Component({
   selector: 'app-dashboard-atleta',
   templateUrl: './dashboard-atleta.component.html',
@@ -13,9 +15,12 @@ import { DialogOxigenoComponent } from "../../dialogs/dialog-oxigeno/dialog-oxig
 })
 export class DashboardAtletaComponent implements OnInit {
 
+  
+
   constructor(private router:Router, public dialog:MatDialog) { }
 
   ngOnInit(): void {
+  
   }
 
   openDialogRitmo()

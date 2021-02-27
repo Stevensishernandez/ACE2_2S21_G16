@@ -20,17 +20,20 @@ import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //firebase modules
 import { AngularFirestore} from "@angular/fire/firestore";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from 'src/environments/environment';
 
 //new libraries
 import { ChartsModule } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
 
 //new components
 import { LoginComponent } from './components/account/login/login.component';
@@ -51,7 +54,12 @@ import { DialogRitmoComponent } from './components/dialogs/dialog-ritmo/dialog-r
 import { DialogTemperaturaComponent } from './components/dialogs/dialog-temperatura/dialog-temperatura.component';
 import { DialogOxigenoComponent } from './components/dialogs/dialog-oxigeno/dialog-oxigeno.component';
 import { DialogAtletasComponent } from './components/dialogs/dialog-atletas/dialog-atletas.component';
+import { SupervisarAtletaDataComponent } from './components/main/supervisar-atleta-data/supervisar-atleta-data.component';
+import { DialogSupervisarComponent } from './components/dialogs/dialog-supervisar/dialog-supervisar.component';
 
+import { XsegundoService } from "./services/ServicioReloj";
+import { ClockComponent } from './components/otros/clock/clock.component';
+import { DialogCompartirComponent } from './components/dialogs/dialog-compartir/dialog-compartir.component';
 
 
 @NgModule({
@@ -75,6 +83,10 @@ import { DialogAtletasComponent } from './components/dialogs/dialog-atletas/dial
     DialogTemperaturaComponent,
     DialogOxigenoComponent,
     DialogAtletasComponent,
+    SupervisarAtletaDataComponent,
+    DialogSupervisarComponent,
+    ClockComponent,
+    DialogCompartirComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,13 +108,27 @@ import { DialogAtletasComponent } from './components/dialogs/dialog-atletas/dial
     MatExpansionModule,
     MatSelectModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
 
     ChartsModule,
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
-
-
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    
   ],
-  providers: [],
+  providers: [XsegundoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/**
+ *angular-devkit
+angular fire
+angular cli
+JESÚS ALEJANDRO MANSILLA VILLATORO0:10
+angular realtime
+Del taha   17.1 al 17.3
+de Liberman   16.1 al 16.5
+*/

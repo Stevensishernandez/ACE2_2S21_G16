@@ -55,7 +55,8 @@
         </div>
     </mat-tab>
     <mat-tab label="Tiempo Real">
-        <div class="texto-libre"><button (click)="clicked()"></button><h1>{{ritmo}}</h1></div>
+        <div class="texto-libre">
+        <h1>{{ritmo}}</h1></div>
         <div class="chart-wrapper">
             <canvas baseChart
                 [datasets]="lineChartData"
@@ -77,7 +78,7 @@
             <mat-icon>pie_chart</mat-icon>
             <mat-card-title>Promedio de ritmo cardiaco</mat-card-title>
             </mat-card-header>
-            <h1>{{ritmo}}</h1>
+            <h1>{{promedioRitmo}}</h1>
             <mat-card-content>
             <p>
               El ritmo cardiaco promedio, basado en las mediciones registradas

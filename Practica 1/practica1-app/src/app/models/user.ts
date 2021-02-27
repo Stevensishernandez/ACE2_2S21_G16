@@ -1,29 +1,26 @@
 export interface User{
-
-    nombres:string;
-    apellidos:string;
-    edad: number;
-    sexo: number;
-    peso: number;
-    estatura: number;
-
-    usuario: string;
-    password: string;
-
+  apellido?: string;
+  edad?: string;
+  estatura?: string;
+  nombre?: string;
+  password?: string;
+  peso?: string;
+  rol?: string;
+  sexo?: string;
+  key?: string;
 }
 
 export interface UserBasicList {
   usuario: string;
-  nombres: string;
 }
 
 export interface Sexo {
-    value: number;
+    value: string;
     viewValue: string;
   }
 
 export interface Rol {
-    value: number;
+    value: string;
     viewValue: string;
   }
 
@@ -32,7 +29,7 @@ export interface PerfilElement {
   name:string
 }
 
-export const ELEMENT_PERFIL: PerfilElement[] = [
+export let ELEMENT_PERFIL: PerfilElement[] = [
     {title: 'Nombres', name: ''},
     {title: 'Apellidos', name: ''},
     {title: 'Edad', name: ''},

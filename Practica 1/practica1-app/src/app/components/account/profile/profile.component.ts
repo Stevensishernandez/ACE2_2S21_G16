@@ -4,6 +4,9 @@ import {Location} from '@angular/common';
 import { Rol,Sexo,User } from "../../../models/user";
 import { PerfilElement, ELEMENT_PERFIL } from "../../../models/user";
 
+import { userService } from "../../../services/UserService";
+import { AngularFireDatabase } from '@angular/fire/database';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,43 +14,64 @@ import { PerfilElement, ELEMENT_PERFIL } from "../../../models/user";
 })
 export class ProfileComponent implements OnInit {
 
+  mostrar:boolean;
+  mostrarTabla:boolean;
+
+  usercontroller = new userService(this.db);
+
   displayedColumns: string[] = ['title', 'name'];
   dataSource = ELEMENT_PERFIL;
+  
+  usuario: string;
 
-  roles: Rol[] = [
-    {value: 0,viewValue:'Atleta'},
-    {value: 1,viewValue:'Coach'},
-  ];
-
-  sexos: Sexo[] = [
-    {value: 0,viewValue:'Masculino'},
-    {value: 1,viewValue:'Femenino'},
-  ];
-
-
-  rol_seleccionado: 'none'
-  sexo_seleccionado: 'none'
-
-
-  usuario=
-  {
-    nombres:'',
-    apellidos:'',
-    edad:'',
-    sexo: '',
-    peso: '',
-    estatura: '',
-
-    usuario: '',
-    password: '',
+  constructor(private db: AngularFireDatabase, private router:Router,private _location: Location) { 
+    this.mostrarTabla = false;
+    this.mostrar =true;
   }
 
-  c_password: string 
-  
-
-  constructor(private router:Router,private _location: Location) { }
-
   ngOnInit(): void {
+
+    this.usuario = sessionStorage.getItem('user');
+    this.iniciar();
+      
+  }
+
+  async iniciar()
+  {
+    if(this.usuario == null)
+    {
+      this.router.navigate(['']);
+      return;
+    }
+
+      this.usercontroller.get_User(this.usuario);
+      this.usercontroller.sincronizar();
+      console.log(this.usercontroller.user)
+    
+
+      this.usercontroller.get_User(this.usuario);
+      this.usercontroller.sincronizar();
+
+      await this.delay(2000);
+
+      console.log(this.usercontroller.user)
+      
+      this.usercontroller.get_User(this.usuario);
+      this.usercontroller.sincronizar();
+
+      this.dataSource[0].name = this.usercontroller.user.nombre;
+      this.dataSource[1].name = this.usercontroller.user.apellido;
+      this.dataSource[2].name = this.usercontroller.user.edad;
+      this.dataSource[3].name = this.usercontroller.user.sexo;
+      this.dataSource[4].name = this.usercontroller.user.peso;
+      this.dataSource[5].name = this.usercontroller.user.estatura;
+
+      this.mostrar = false;
+      this.mostrarTabla = true;
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   cancel()

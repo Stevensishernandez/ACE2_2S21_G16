@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { LoginService } from "../../services/login/login.service";
+
 
 import { PruebaService } from "../../../services/Prueba/prueba.service";
-import { User } from "../../../models/user";
+import { userService } from "../../../services/UserService";
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { User } from "../../../models/user";
 export class LoginComponent implements OnInit {
 
 
+  usercontroller = new userService(this.db);
 
 
   credenciales=
@@ -21,14 +23,12 @@ export class LoginComponent implements OnInit {
     password:'',
   }
 
-  usuarioRecibido='';
-  passwordRecibida='';
-
   
-  constructor(private router:Router, private pruebaService:PruebaService) { }
+  constructor(private db: AngularFireDatabase, private router:Router, private pruebaService:PruebaService) { }
 
   ngOnInit(): void {
-
+    this.usercontroller.sincronizar();
+    this.usercontroller.get_Users();
   }
 
   
@@ -41,40 +41,37 @@ export class LoginComponent implements OnInit {
 
   login()
   {
-    
-  }
-  
-  loginAtleta()
-  {
-      
+
+
     if(this.credenciales.usuario!=''&&this.credenciales.password!='')
     {
-      if(this.usuarioRecibido!=this.credenciales.usuario)
+      
+      this.usercontroller.get_User(this.credenciales.usuario);
+      this.usercontroller.sincronizar();
+
+      if(this.usercontroller.user != null)
       {
-        if(this.passwordRecibida!=this.credenciales.password)
+        if(this.usercontroller.user.password == this.credenciales.password)
         {
-          this.router.navigate(['./sign-up']);
+          sessionStorage.setItem('user',this.credenciales.usuario);
+          sessionStorage.setItem('rol',this.usercontroller.user.rol);
+
+          if(this.usercontroller.user.rol == 'C' || this.usercontroller.user.rol == 'c')
+          {
+            this.router.navigate(['./coach']);
+
+          }
+          else
+          {
+            this.router.navigate(['./atleta']);
+          }
+          return;
         }
-        alert("Acceso denegado! Usuario o contraseña incorrectos.");
       }
+      alert("Acceso denegado! Usuario o contraseña incorrectos.");
+      return;
     }
-    alert("Ingres sus credenciales por favor");
+    alert("Ingrese sus credenciales por favor");
   }
 
-  loginCoach()
-  {
-      
-    if(this.credenciales.usuario!=''&&this.credenciales.password!='')
-    {
-      if(this.usuarioRecibido!=this.credenciales.usuario)
-      {
-        if(this.passwordRecibida!=this.credenciales.password)
-        {
-          this.router.navigate(['./sign-up']);
-        }
-      }
-    }
-  }
-  
-  
 }

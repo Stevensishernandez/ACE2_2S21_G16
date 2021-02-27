@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+
+import { UserServiceService } from "../../../services/user-service/user-service.service";
+
+import { DialogCompartirComponent } from "../../dialogs/dialog-compartir/dialog-compartir.component";
 
 @Component({
   selector: 'app-nav-coach',
@@ -8,11 +13,25 @@ import { Router } from '@angular/router';
 })
 export class NavCoachComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  usuario: string;
 
-  ngOnInit(): void {
+  constructor(public servicioUsuario: UserServiceService, private router: Router, public dialog: MatDialog) {
+    
+    let usuario = sessionStorage.getItem('user');
+    this.servicioUsuario.inspeccionarme(usuario); 
+    this.usuario = usuario;
   }
 
+
+
+  ngOnInit(): void {
+ 
+  }
+
+  inspeccionarme()
+  {
+    this.servicioUsuario.inspeccionarme(this.usuario);
+  }
   
   irDashboard()
   {
@@ -38,9 +57,21 @@ export class NavCoachComponent implements OnInit {
   {
     this.router.navigate(['coach/atletas']);
   }
+
+  openDialogTroll()
+  {
+    const dialogRef = this.dialog.open(DialogCompartirComponent,{
+      width: '300px',
+    });
+  }
+
   logout()
   {
-    this.router.navigate(['login']);
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('rol');
+    sessionStorage.removeItem('userActive');
+
+    this.router.navigate(['']);  
   }
 
 }

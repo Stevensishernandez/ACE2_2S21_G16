@@ -17,7 +17,7 @@ import { SupervisarAtletaComponent } from "./components/main/supervisar-atleta/s
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
@@ -81,10 +81,6 @@ const routes: Routes = [
       {
         path: 'atletas',
         component: AtletasComponent,
-      },
-      {
-        path: 'supervisar-atleta',
-        component: SupervisarAtletaComponent,
       },
     ]
   },

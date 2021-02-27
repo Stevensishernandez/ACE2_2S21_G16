@@ -7,7 +7,7 @@
         <button mat-icon-button class="example-icon favorite-icon" (click)="irDashboard()" aria-label="Example icon-button with heart icon">
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <button mat-icon-button class="example-icon" (click)="openDialogTroll()" aria-label="Example icon-button with share icon">
             <mat-icon>share</mat-icon>
         </button>
 
@@ -36,6 +36,10 @@
                 <span>Sing out</span>
             </button>
           </mat-menu>
+    </mat-toolbar>
+    <mat-toolbar color="basic" class="barra2 mat-elevation-z4">
+      <h4>{{servicioUsuario.usuarioActivo}}</h4>
+      <span class="example-spacer"></span>
     </mat-toolbar>
 </nav>
 

@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .centrador {
+    display: flex;
+    justify-content: center;  
+  }
+  
+  .general {
+      margin-top: 20px;
+  }
+  
+  
+  
+  .button-form-red {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 300px;
+      background-color: rgb(238, 6, 6);
+      color: white;
+      height: 50px;
+    }
+    
+    .example-container {
+      max-height: 550px;
+      overflow: auto;
+    }

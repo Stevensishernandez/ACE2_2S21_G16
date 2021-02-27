@@ -17,6 +17,10 @@ export class DashboardCoachComponent implements OnInit {
   constructor(private router:Router, private dialog:MatDialog) { }
 
   ngOnInit(): void {
+    let d = new Date();
+
+    console.log('fecha dashboard',d.getDate())
+
   }
 
   openDialogRitmo()

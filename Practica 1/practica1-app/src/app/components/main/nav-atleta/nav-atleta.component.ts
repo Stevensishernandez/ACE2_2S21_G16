@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+
+
+import { UserServiceService } from "../../../services/user-service/user-service.service";
+
+import { DialogCompartirComponent } from "../../dialogs/dialog-compartir/dialog-compartir.component";
 
 @Component({
   selector: 'app-nav-atleta',
@@ -8,7 +14,11 @@ import { Router } from '@angular/router';
 })
 export class NavAtletaComponent implements OnInit {
 
-  constructor(private router:Router) { }
+
+  constructor(public servicioUsuario: UserServiceService, private router:Router, public dialog: MatDialog) {
+    let usuario = sessionStorage.getItem('user'); 
+    this.servicioUsuario.inspeccionarme(usuario);
+   }
 
   ngOnInit(): void {
   }
@@ -34,9 +44,20 @@ export class NavAtletaComponent implements OnInit {
   {
     this.router.navigate(['atleta/oxigeno-sangre']);
   }
+
+  openDialogTroll()
+  {
+    const dialogRef = this.dialog.open(DialogCompartirComponent,{
+      width: '300px',
+    });
+  }
+
   logout()
   {
-    this.router.navigate(['login']);
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('rol');
+
+    this.router.navigate(['']);  
   }
 
 }

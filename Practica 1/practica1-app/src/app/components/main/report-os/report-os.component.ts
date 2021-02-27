@@ -4,6 +4,13 @@ import { Color, Label  } from "ng2-charts";
 import { PeriodicElement ,ELEMENT_OXIGENO, simboloOxigeno } from "../../../models/data";
 import { MatTable } from '@angular/material/table';
 
+import {reportService} from '../../../services/ReportService';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {Activo} from '../../../models/Activo';
+import {Registro} from '../../../models/Registro';
+
+import { UserServiceService } from "../../../services/user-service/user-service.service";
+
 @Component({
   selector: 'app-report-os',
   templateUrl: './report-os.component.html',
@@ -34,7 +41,7 @@ export class ReportOsComponent implements OnInit {
 
   /* Line chart variables */
   lineChartData: ChartDataSets[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Ritmo cardiaco'}
+    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Oxigeno en la Sangre'}
   ]
 
   lineChartLabels: Label[] =  ['', '', '', '', '', '', '', '','', ''];
@@ -62,52 +69,116 @@ export class ReportOsComponent implements OnInit {
   panelOpenState = false;
 
   /* Elementos númericos simpes */
-  newData:number[]=[];
+  datoRecibido = 'T:154, O:545, R:868';
+  promedioOxigeno;
 
   oxigeno; 
+
+   /* Elementos firebase */
+
+   usuarioActual: any;
+   fecha: string;
+   reportcotroller = new reportService(this.db);
+   listaRegistroUsuario: any;
+   listaTop10Usuario: any;
+ 
+   /* Variables auxiliares */
+   newData:number[] = []
+   newDataFecha:string[] = []
+   usuario: string;
+   promedio: number;
+ 
+   iniciado:boolean;
   
-  constructor() { }
+  constructor(private servicioUsuario: UserServiceService, private db: AngularFireDatabase) { 
+    this.iniciado = false;
+  }
 
   ngOnInit(): void {
+    this.usuario = sessionStorage.getItem('user');
+    this.get_Data();
+    this.iniciar();
   }
+  
+  async iniciar()
+  {
+    await this.delay(3000);
+    this.Update();
+    this.updateHistorial();
+    this.promedioOxigeno = 0 + simboloOxigeno;
+
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+
   clicked()
   {
-    this.newData = [
-      this.newData[1],
-      this.newData[2],
-      this.newData[3],
-      this.newData[4],
-      this.newData[5],
-      this.newData[6],
-      this.newData[7],
-      this.newData[8],
-      this.newData[9],
-      Math.random(),
-    ];
-    
-    
-    this.dataSource[0] = {fechaHora: '23-02-2021', dato: this.newData[0]};
-    this.dataSource[1] = {fechaHora: '24-02-2021', dato: this.newData[1]};
-    this.dataSource[2] = {fechaHora: '25-02-2021', dato: this.newData[2]};
-    this.dataSource[3] = {fechaHora: '26-02-2021', dato: this.newData[3]};
-    this.dataSource[4] = {fechaHora: '27-02-2021', dato: this.newData[4]};
-    this.dataSource[5] = {fechaHora: '28-02-2021', dato: this.newData[5]};
-    this.dataSource[6] = {fechaHora: '29-02-2021', dato: this.newData[6]};
-    this.dataSource[7] = {fechaHora: '30-02-2021', dato: this.newData[7]};
-    this.dataSource[8] = {fechaHora: '31-02-2021', dato: this.newData[8]};
-    this.dataSource[9] = {fechaHora: '32-02-2021', dato: this.newData[9]};
+    console.log(this.Update());
+    this.updateHistorial();
+  }
 
-    this.updateData(this.newData)
-    
+  procesar(fechaDato)
+  {
+    let nuevoDato;
+    let nuevaFecha;
+    let sumaDatos:number = 0;
+    let arregloDatos:string[];
+    let i;
+
+    for(i in fechaDato)
+    {
+      arregloDatos = fechaDato[i].cadena.replace('\"','').replace('\"','').split(',');
+      nuevoDato = +arregloDatos[2].split(':')[1];
+      this.newData[i] = nuevoDato;
+      nuevaFecha = fechaDato[i].horaexacta;
+      this.newDataFecha[i] = nuevaFecha;
+      this.dataSource[i] =  {fechaHora: nuevaFecha, dato: nuevoDato};
+      sumaDatos += nuevoDato;
+    }
+    this.promedio = Math.round(sumaDatos/(+i+1));
 
   }
 
-  updateData(newData:number [])
+  updateHistorial()
   {
-    this.oxigeno = newData [9] + simboloOxigeno;
-    this.lineChartData[0].data = newData;
-    this.barChartData[0].data = newData;
+    this.barChartData[0].data = this.newData;
+    this.barChartLabels = this.newDataFecha;
     this.listado.renderRows();
   }
+  updateAll()
+  {
+    this.oxigeno = this.newData [9] + simboloOxigeno;
+    this.lineChartData[0].data = this.newData;
+    this.barChartData[0].data = this.newData;
+    this.barChartLabels = this.newDataFecha;
+    this.lineChartLabels = this.newDataFecha;
+    this.promedioOxigeno =this.promedio;
+    this.listado.renderRows();
+  }
+
+  get_Data() {
+    return new Promise((resolve, reject) => {
+      this.db.database.ref('activo/').on('value', (snapshot) => {
+      this.Update();
+      if(this.iniciado){ this.updateAll();} else { this.iniciado = true;}
+      });
+    });
+  }
+  
+  Update(): any{
+    this.reportcotroller.get_Cambio();
+    // si la caja donde se ingresa la fecha esta null se asume que es la fecha de hoy.
+    console.log(this.servicioUsuario.usuarioActivo);
+    this.reportcotroller.get_AllDataUserMin(this.fecha, this.servicioUsuario.usuarioActivo,10);
+    this.usuarioActual = JSON.stringify(this.reportcotroller.activo as Activo);
+    this.listaRegistroUsuario = JSON.stringify(this.reportcotroller.cambiosRealTime);
+    this.listaTop10Usuario = JSON.stringify(this.reportcotroller.cambiosTop10);
+    this.procesar(this.reportcotroller.cambiosTop10);
+  }
+
+  
 
 }
