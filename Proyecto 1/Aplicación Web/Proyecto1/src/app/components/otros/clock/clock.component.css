@@ -1,0 +1,11 @@
+
+  .reloj {
+    font-size: large;
+    text-align: right;
+  }
+
+  .icono {
+    width: 5px;
+    height: 5px;
+    float: left;
+  }

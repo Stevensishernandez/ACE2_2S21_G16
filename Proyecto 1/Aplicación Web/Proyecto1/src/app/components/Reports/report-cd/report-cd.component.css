@@ -1,0 +1,42 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .card {
+    max-width: 300px;
+    margin-top: 30px;
+}
+
+.block-bottom{
+  height: 100px;
+}
+
+.medicion-card {
+  display: inline-block;
+  height: 350px;
+  margin-right: 5%;
+  margin-top: 30px;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.general-block {
+  justify-content: center;
+  display: flex;
+}
+
+.texto-libre {
+  margin-left: 5%;
+}
+
+.panel-principal {
+  max-width: 900px;
+  background-color: rgb(57, 57, 57);
+}
+
