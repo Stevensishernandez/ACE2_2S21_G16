@@ -179,23 +179,6 @@ void loop(){
         }
     }
     
-    if(t-tiempo < 25){
-      if(steps < 16){
-          if(randd == 0){
-            randd = 1;  
-          }else if(randd == 1){
-            randd = 2;  
-          }else{
-            randd = 0;  
-          }
-          steps  += randd;
-          if(randd == 2){
-            steps -=1;
-          }
-          
-      }
-    }
-    
     Serial.println("P:"+String(PulseSensorAux)+",S:"+steps+",T:"+String(t)+",V:"+String(vuelta)+",B:"+String(rendido));
     Serial1.print("P:"+String(PulseSensorAux)+",S:"+steps+",T:"+String(t)+",V:"+String(vuelta)+",B:"+String(rendido));
     //Serial1.print("hola "+String(Signal)); //jala de ahuevo
