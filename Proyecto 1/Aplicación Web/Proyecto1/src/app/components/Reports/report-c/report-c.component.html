@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Conteo de repeticiones</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <p>
+                    Se mostrará el listado de entrenamientos y sus repeticiones. 
+                    Además de visualizar el máximo, mínimo y promedio de repeticione. 
+                    Incluye elementos gráficos y descriptivos.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)="irConetoRepeticiones()" color="accent">IR REPORT</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Velocidad Alcanzada</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <p>
+                    Se mostrará la velocidad mínima, máxima y promedio alcanzado en cada repetición.
+                    Incluye gráficos y descriptivos.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)="irVelocidadAlcanzada()" color="accent">IR REPORT</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Distancia medida por repeticion</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <p>
+                    Se mostrará la distancia recorrida por repetción.
+                    Incluye elementos gráficos y descriptivos.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)="irDistanciaRepeticion()" color="accent">IR REPORT</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Conteo de fallos</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <p>
+                    Se mostrará el conteo de veces que se ha fallado y las repeticiones realizadas previas al fallo.
+                    Incluye elementos gráficos y descriptivos.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)="irConteoFallos()" color="accent">IR REPORT</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card">
+                <mat-card-header>
+                <mat-card-title>Conteo de rendiciones</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <p>
+                    Se mostrará el conteo de veces que se ha rendido y las repeticiones realizadas previas a rendirse.
+                    Incluye elementos gráficos y descriptivos.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)="irConteoRendicion()" color="accent">IR REPORT</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    
+</div>

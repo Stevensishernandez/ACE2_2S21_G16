@@ -1,0 +1,113 @@
+<div class="container panel-principal">
+    <mat-tab-group>
+      <mat-tab label="Entrenamientos "> 
+          <div class="chart-wrapper">
+              <canvas baseChart
+                  [datasets]="barChartDataEnt"
+                  [labels]="barChartLabelsEnt"
+                  [options]="barChartOptions"
+                  [colors]="barChartColorsEnt"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType"
+                  [plugins]="barChartPlugins"
+              >
+              </canvas>
+          </div>
+          <div class="container">
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                   <h2>Entrenamientos</h2> 
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    {{panelOpenState ? 'Ocultar' : 'Mostrar listado'}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="example-container mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSourceEnt">
+                
+                    <!-- Icono Column -->
+                    <ng-container matColumnDef="icono">
+                      <th mat-header-cell *matHeaderCellDef>  </th>
+                      <td mat-cell *matCellDef="let element"> <mat-icon>access_time</mat-icon> </td>
+                    </ng-container>
+                    <!-- Repeticiones Column -->
+                    <ng-container matColumnDef="fechahora">
+                      <th mat-header-cell *matHeaderCellDef>Fecha </th>
+                      <td mat-cell *matCellDef="let element"> {{element.fechaHora}} </td>
+                    </ng-container>
+
+                    <!-- Repeticiones Column -->
+                    <ng-container matColumnDef="entrenamiento">
+                      <th mat-header-cell *matHeaderCellDef> Entrenamiento </th>
+                      <td mat-cell *matCellDef="let element"> {{element.entrenamiento}} </td>
+                    </ng-container>
+                
+                    <!-- Repeticiones Column -->
+                    <ng-container matColumnDef="repeticiones">
+                      <th mat-header-cell *matHeaderCellDef> Repeticiones </th>
+                      <td mat-cell *matCellDef="let element"> {{element.repeticiones}} </td>
+                    </ng-container>
+                
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="aprobacion">
+                      <th mat-header-cell *matHeaderCellDef> Aprobación </th>
+                      <td mat-cell *matCellDef="let element"> {{element.aprobacion}} </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsEnt; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsEnt;"></tr>
+                  </table>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion> 
+          </div>
+      </mat-tab>
+      <mat-tab label="Repeticiones "> 
+        <div class="chart-wrapper">
+            <canvas baseChart
+                [datasets]="barChartDataRep"
+                [labels]="barChartLabelsRep"
+                [options]="barChartOptions"
+                [colors]="barChartColorsRep"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [plugins]="barChartPlugins"
+            >
+            </canvas>
+        </div>
+        <div class="container">
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 <h2>Repeticiones semanales</h2> 
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{panelOpenState ? 'Ocultar' : 'Mostrar listado'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="example-container mat-elevation-z8">
+                <table>
+                  <tr>
+                    <td>Promedio</td>
+                    <td>Maximo</td>
+                    <td>Minimo</td>
+                </tr>
+                <tr>
+                  <td>{{promedio}}</td>
+                  <td>{{maximo}}</td>
+                  <td>{{minimo}}</td>
+                </tr>
+        
+                </table>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion> 
+        </div>
+    </mat-tab>
+    </mat-tab-group>
+  </div>

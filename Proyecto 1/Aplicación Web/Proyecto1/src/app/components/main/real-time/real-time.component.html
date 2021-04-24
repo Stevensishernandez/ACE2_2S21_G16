@@ -1,0 +1,84 @@
+<div class="title"><h2>Real Time</h2><br></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>favorite</mat-icon>
+                <mat-card-title>Ritmo Cardiaco</mat-card-title>
+                </mat-card-header>
+                <h2>{{ritmo}}</h2>
+                <div class="chart-wrapper">
+                    <canvas baseChart
+                        [datasets]="lineChartDataRC"
+                        [labels]="lineChartLabelsRC"
+                        [options]="ChartOptions"
+                        [colors]="lineChartColorsRC"
+                        [legend]="ChartLegend"
+                        [chartType]="lineChartType"
+                        [plugins]="ChartPlugins"
+                    >
+                    </canvas>
+                </div>     
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>flash_on</mat-icon>
+                <mat-card-title>Velocidad</mat-card-title>
+                </mat-card-header>
+                <h2>{{velocidad}}</h2>
+                <div class="chart-wrapper">
+                    <canvas baseChart
+                        [datasets]="doughnuCharDatav"
+                        [labels]="doughnutChartLabelsV"
+                        [options]="ChartOptions"
+                        [legend]="ChartLegend"
+                        [chartType]="doughnutChartType"
+                        [plugins]="ChartPlugins"
+                    >
+                    </canvas>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>directions_run</mat-icon>
+                <mat-card-title>Carrera</mat-card-title>
+                </mat-card-header>
+                <table>
+                    <tr>
+                        <td>Distancia:</td>
+                        <td>{{distancia}}</td>
+                    </tr>
+                    <tr>
+                        <td>Repetición:</td>
+                        <td>{{repeticion}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tiempo:</td>
+                        <td>{{tiempo}}</td>
+                    </tr>
+                </table>
+            </mat-card>
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>error_outline</mat-icon>
+                <mat-card-title>Estado</mat-card-title>
+                </mat-card-header>
+                <div class="notice">
+                    {{estado}}
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+   
+
+    
+
+    
