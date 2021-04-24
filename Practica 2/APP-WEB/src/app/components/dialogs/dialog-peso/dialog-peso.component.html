@@ -1,0 +1,36 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon matSuffix>account_circle</mat-icon>
+      </div>
+      <mat-card-title>CAMBIAR PESO</mat-card-title>
+    </mat-card-header>
+
+          <form class="example-form">
+
+            <div class="little-blok"></div>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Peso</mat-label>
+              <input type="number" matInput placeholder="Ingresar peso en libras" value="" [(ngModel)]="usuario.peso" name="in_peso">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="select-field-form">
+              <mat-label>Unidades de peso</mat-label>
+              <mat-select placeholder="seleccion" [(ngModel)]="rol_seleccionado" name="seleccion">
+                <mat-option *ngFor="let rol of roles" [value]="rol.value">
+                  {{rol.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+
+
+            <div class="little-blok"></div>
+
+            <button class="button-form-blue" (click)="cambiar()" mat-button mat-dialog-close color="primary">Cambiar</button>
+            <button class="button-form-red" mat-button mat-dialog-close color="primary">Cancel</button>
+
+          </form>
+
+  </mat-card>

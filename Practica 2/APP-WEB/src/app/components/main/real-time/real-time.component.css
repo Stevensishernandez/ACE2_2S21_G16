@@ -1,0 +1,20 @@
+
+.real-time-body {
+    background-color: rgb(57, 57, 57);;
+}
+.title {
+    color: white;
+}
+
+.example-card {
+    margin-top: 15px;
+}
+.example-min-card {
+    margin-top: 15px;
+    max-width: 250px;
+    min-height: 100px;
+}
+
+.notice {
+    font-size: large;
+}

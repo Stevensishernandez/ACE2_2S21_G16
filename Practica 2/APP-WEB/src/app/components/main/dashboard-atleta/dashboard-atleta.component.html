@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card-block">
+                <mat-card class="card">
+                    <mat-card-header>
+                    <mat-icon>bar_chart</mat-icon>
+                    <mat-card-title>Medición de VO2MAX</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="image-card" src="https://i.makeagif.com/media/10-06-2015/hPF_fk.gif" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                    <p>
+                        {{servicioUsuario.pesoLabel}}
+                    </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    <button mat-button (click)="openDialogVO2MAX()" color="accent">INFO</button>
+                    <button mat-button (click)="irComenzar()" color="accent">IR</button>
+                    <button mat-button (click)="openDialogCambiarPeso()" color="accent">PESO</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-block">
+                <mat-card class="card">
+                    <mat-card-header>
+                    <mat-icon>bar_chart</mat-icon>
+                    <mat-card-title>Reportes</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image class="image-card" src="https://blog.inconcertcc.com/imagenes/1_A5mRQbs04WyJsnqGMJKhCg.gif" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                    <p>
+                    </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    <button mat-button (click)="openDialogReportes()" color="primary">INFO</button>
+                    <button mat-button (click)="irReportes()" color="primary">REPORT</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<nav>
+  <mat-toolbar color="primary" class="mat-elevation-z4">
+
+      <mat-icon> local_hospital </mat-icon>
+      <span>TVE</span>
+      <span class="example-spacer"></span>
+     
+      <button mat-raised-button="primary" (click)="irLogin()">Sign In</button>
+    </mat-toolbar>
+</nav>
+
+<div class="fondo">
+  
+<div class="basic-blok"></div>  
+<div class="center-content">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </div>
+        <mat-card-title>CREAR CUENTA</mat-card-title>
+      </mat-card-header>
+
+            <form class="example-form">
+
+              <div class="little-blok"></div>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Usuario</mat-label>
+                <input type="user" matInput placeholder="Ingresar usuario" value=""  [(ngModel)]="usuario.usuario" name="in_usuario" >
+              </mat-form-field>
+
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Peso</mat-label>
+                <input type="number" matInput placeholder="Ingresar peso en libras" value="" [(ngModel)]="usuario.peso" name="in_peso">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="select-field-form">
+                <mat-label>Unidades de peso</mat-label>
+                <mat-select placeholder="seleccion" [(ngModel)]="rol_seleccionado" name="seleccion">
+                  <mat-option *ngFor="let rol of roles" [value]="rol.value">
+                    {{rol.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="contraseña" value="" [(ngModel)]="usuario.password" name="in_password">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Confirm password</mat-label>
+                <input type="password" matInput placeholder="Confirmar contraseña" value="" [(ngModel)]="c_password" name="in_c_password">
+              </mat-form-field>
+
+              
+
+
+              <div class="little-blok"></div>
+
+              <button class="button-form-blue" (click)="signUp()" mat-button color="primary">Sing Up</button>
+              <button class="button-form-red" (click)="cancel()" mat-button color="primary">Cancel</button>
+
+            </form>
+
+    </mat-card>
+  </div>
+</div>

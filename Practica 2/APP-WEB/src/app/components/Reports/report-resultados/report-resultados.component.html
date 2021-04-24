@@ -1,0 +1,181 @@
+<div class="container panel-principal">
+  <mat-tab-group>
+    <mat-tab label="Exhalado"> 
+        <div class="chart-wrapper">
+            <canvas baseChart
+                [datasets]="barChartDataEx"
+                [labels]="barChartLabelsEx"
+                [options]="barChartOptions"
+                [colors]="barChartColorsEx"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                [plugins]="barChartPlugins"
+            >
+            </canvas>
+        </div>
+        <div class="container">
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h2>Valores númericos</h2> 
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{panelOpenState ? 'Ocultar' : 'Mostrar listado'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="example-container mat-elevation-z8">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <mat-card class="card example-min-card">
+                        <mat-card-header>
+                        <mat-icon>brightness_high</mat-icon>
+                        <mat-card-title>Máximo</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="notice">
+                            {{maximoEx}}
+                            </div>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                    <div class="col">
+                      <mat-card class="card example-min-card">
+                        <mat-card-header>
+                        <mat-icon>brightness_medium</mat-icon>
+                        <mat-card-title>Promedio</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="notice">
+                            {{promedioEx}}
+                            </div>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                    <div class="col">
+                      <mat-card class="card example-min-card">
+                        <mat-card-header>
+                        <mat-icon>brightness_low</mat-icon>
+                        <mat-card-title>Mínimo</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="notice">
+                            {{minimoEx}}
+                            </div>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion> 
+        </div>
+    </mat-tab>
+    <mat-tab label="Inhalado "> 
+      <div class="chart-wrapper">
+          <canvas baseChart
+              [datasets]="barChartDataIn"
+              [labels]="barChartLabelsIn"
+              [options]="barChartOptions"
+              [colors]="barChartColorsIn"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              [plugins]="barChartPlugins"
+          >
+          </canvas>
+      </div>
+      <div class="container">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h2>Valores númericos</h2> 
+              </mat-panel-title>
+              <mat-panel-description>
+                {{panelOpenState ? 'Ocultar' : 'Mostrar listado'}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="example-container mat-elevation-z8">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <mat-card class="card example-min-card">
+                      <mat-card-header>
+                      <mat-icon>brightness_high</mat-icon>
+                      <mat-card-title>Máximo</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                          <div class="notice">
+                          {{maximoIn}}
+                          </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <div class="col">
+                    <mat-card class="card example-min-card">
+                      <mat-card-header>
+                      <mat-icon>brightness_medium</mat-icon>
+                      <mat-card-title>Promedio</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                          <div class="notice">
+                          {{promedioIn}}
+                          </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <div class="col">
+                    <mat-card class="card example-min-card">
+                      <mat-card-header>
+                      <mat-icon>brightness_low</mat-icon>
+                      <mat-card-title>Mínimo</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                          <div class="notice">
+                          {{minimoIn}}
+                          </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion> 
+      </div>
+    </mat-tab>
+    <mat-tab label="Gráfica final "> 
+      <div class="chart-wrapper">
+        <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins"
+        >
+        </canvas>
+      </div>     
+    </mat-tab> 
+    <mat-tab label="Medición final de VO2MAX"> 
+      <div class="container">
+        <mat-card class="card example-min-card">
+          <mat-card-header>
+          <mat-icon>favorite</mat-icon>
+          <mat-card-title>VO2MAX FINAL</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <div class="notice">
+              {{vo2max}}
+              </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab> 
+  </mat-tab-group>
+</div>
