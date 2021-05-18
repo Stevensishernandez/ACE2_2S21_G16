@@ -1,0 +1,132 @@
+<div class="title"><h2>Real Time</h2><br></div>
+
+<!-- <button mat-icon-button class="example-icon" (click)="clicked()" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+</button><-->
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>favorite</mat-icon>
+                   <mat-icon>volume_up</mat-icon>
+                    <mat-slider
+                    class="slider-class"
+                    thumbLabel
+                    [displayWith]="formatLabel"
+                    [(ngModel)]="volumen"
+                    tickInterval="0.05"
+                    step="0.05"
+                    min="0"
+                    max="1"
+                    aria-label="units"></mat-slider>
+                <mat-card-title>Ritmo Cardiaco</mat-card-title>
+                </mat-card-header>
+                <h2>{{Ritmo}}</h2>
+                <div class="chart-wrapper">
+                    <canvas baseChart
+                        [datasets]="ChartDataRitmo"
+                        [labels]="ChartLabels"
+                        [options]="ChartOptions"
+                        [colors]="ChartColorsRitmo"
+                        [legend]="ChartLegend"
+                        [chartType]="ChartTypeRitmo"
+                        [plugins]="ChartPlugins"
+                    >
+                    </canvas>
+                </div>     
+            </mat-card>
+            <mat-card class="varianza-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="icono-space">
+                            <mat-icon class="icon-up" *ngIf="mostrar_ritmo_up">keyboard_arrow_up</mat-icon>
+                            <mat-icon class="icon-down" *ngIf="mostrar_ritmo_down">keyboard_arrow_down</mat-icon>
+                            <mat-icon class="icon-midle" *ngIf="mostrar_ritmo_midle">more_horiz</mat-icon>        
+                        </div>
+                        <div class="text-space">
+                            {{varianza_ritmo}}
+                        </div>
+                    </div>
+                </div>           
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>thermostat</mat-icon>
+                <mat-card-title>Temperatura Corporal</mat-card-title>
+                </mat-card-header>
+                <h2>{{Temperatura}}</h2>
+                <div class="chart-wrapper">
+                    <canvas baseChart
+                        [datasets]="ChartDataTemperatura"
+                        [labels]="ChartLabels"
+                        [options]="ChartOptions"
+                        [colors]="ChartColorsTemperatura"
+                        [legend]="ChartLegend"
+                        [chartType]="ChartTypeTemperatura"
+                        [plugins]="ChartPlugins"
+                    >
+                    </canvas>
+                </div>     
+            </mat-card>
+            <mat-card class="varianza-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="icono-space">
+                            <mat-icon class="icon-up" *ngIf="mostrar_temperatura_up">keyboard_arrow_up</mat-icon>
+                            <mat-icon class="icon-down" *ngIf="mostrar_temperatura_down">keyboard_arrow_down</mat-icon>
+                            <mat-icon class="icon-midle" *ngIf="mostrar_temperatura_midle">more_horiz</mat-icon>        
+                        </div>
+                        <div class="text-space">
+                            {{varianza_temperatura}}
+                        </div>
+                    </div>
+                </div>           
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card class="card example-card">
+                <mat-card-header>
+                <mat-icon>shield</mat-icon>
+                <mat-card-title>Oxígeno en la Sangre</mat-card-title>
+                </mat-card-header>
+                <h2>{{Oxigeno}}</h2>
+                <div class="chart-wrapper">
+                    <canvas baseChart
+                        [datasets]="ChartDataOxigeno"
+                        [labels]="ChartLabels"
+                        [options]="ChartOptions"
+                        [colors]="ChartColorsOxigeno"
+                        [legend]="ChartLegend"
+                        [chartType]="ChartTypeOxigeno"
+                        [plugins]="ChartPlugins"
+                    >
+                    </canvas>
+                </div>     
+            </mat-card>
+            <mat-card class="varianza-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="icono-space">
+                            <mat-icon class="icon-up" *ngIf="mostrar_oxigeno_up">keyboard_arrow_up</mat-icon>
+                            <mat-icon class="icon-down" *ngIf="mostrar_oxigeno_down">keyboard_arrow_down</mat-icon>
+                            <mat-icon class="icon-midle" *ngIf="mostrar_oxigeno_midle">more_horiz</mat-icon>        
+                        </div>
+                        <div class="text-space">
+                            {{varianza_oxigeno}}
+                        </div>
+                    </div>
+                </div>           
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+   
+
+    
+
+    

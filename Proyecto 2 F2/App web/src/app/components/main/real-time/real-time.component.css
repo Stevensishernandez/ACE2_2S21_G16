@@ -1,0 +1,45 @@
+
+.real-time-body {
+    background-color: rgb(57, 57, 57);
+}
+.icon-up {
+    background-color: green;
+}
+.icon-down {
+    background-color: red;
+}
+
+.icon-midle {
+    background-color: gray;
+}
+
+.title {
+    color: white;
+}
+
+.example-card {
+    margin-top: 15px;
+    min-height: 285px;
+
+}
+.example-min-card {
+    margin-top: 15px;
+    max-width: 250px;
+    min-height: 100px;
+}
+
+.notice {
+    font-size: large;
+}
+
+.varianza-container {
+    margin-top: 15px;
+}
+
+.icono-space {
+    width: 25%;
+}
+
+.text-space {
+    width: 75%;
+}

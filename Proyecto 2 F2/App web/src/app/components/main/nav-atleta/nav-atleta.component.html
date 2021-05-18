@@ -1,0 +1,52 @@
+<nav>
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+
+        <mat-icon> local_hospital </mat-icon>
+        <span>SMARTH STATUS G16</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="irDashboard()" aria-label="Example icon-button with heart icon">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="irTiempoReal()" aria-label="Example icon-button with heart icon">
+          <mat-icon>timeline</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" (click)="openDialogTroll()" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="irPerfil()">
+              <mat-icon>person_pin</mat-icon>
+                <span>Perfil</span>
+            </button>
+            <button mat-menu-item (click)="irTiempoReal()">
+              <mat-icon>timeline </mat-icon>
+                <span>Tiempo Real</span>
+            </button>
+            <button mat-menu-item (click)="irRitmoCardiaco()">
+              <mat-icon>favorite</mat-icon>
+                <span>Ritmo Cardiaco</span>
+            </button>
+            <button mat-menu-item (click)="irTemperaturaCorporal()">
+              <mat-icon>thermostat</mat-icon>
+                <span>Temperatura</span>
+            </button>
+            <button mat-menu-item (click)="irOxigenoSangre()">
+              <mat-icon>shield</mat-icon>
+                <span>Oxigeno en sangre</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+                <span>Sing out</span>
+            </button>
+          </mat-menu>
+    </mat-toolbar>
+    <mat-toolbar color="basic" class="barra2 mat-elevation-z4">
+      <h4>{{servicioUsuario.usuarioActivo}}</h4>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+</nav>
+
